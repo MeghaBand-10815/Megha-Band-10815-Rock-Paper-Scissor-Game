@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .game-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 12px;
+            width: 360px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .message {
+            margin: 15px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .choices button {
+            padding: 10px 15px;
+            margin: 6px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .choices button:hover {
+            transform: scale(1.1);
+            background-color: #fbc531;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game-container">
+    <h1>Rock Paper Scissors</h1>
+
+    <div class="score-board">
+        <div>User: <span id="userScore">0</span></div>
+        <div>Computer: <span id="computerScore">0</span></div>
+    </div>
+
+    <p class="message" id="message">Make your move!</p>
+
+    <div class="choices">
+        <button onclick="playGame('rock')">✊ Rock</button>
+        <button onclick="playGame('paper')">✋ Paper</button>
+        <button onclick="playGame('scissors')">✌ Scissors</button>
+    </div>
+
+    <div class="result">
+        <p>You chose: <span id="userChoice">-</span></p>
+        <p>Computer chose: <span id="computerChoice">-</span></p>
+    </div>
+</div>
+
+<script>
+    let userScore = 0;
+    let computerScore = 0;
+
+    function playGame(userChoice) {
+        const choices = ["rock", "paper", "scissors"];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+        document.getElementById("userChoice").textContent = userChoice;
+        document.getElementById("computerChoice").textContent = computerChoice;
+
+        if (userChoice === computerChoice) {
+            document.getElementById("message").textContent = "It's a Draw!";
+        } 
+        else if (
+            (userChoice === "rock" && computerChoice === "scissors") ||
+            (userChoice === "paper" && computerChoice === "rock") ||
+            (userChoice === "scissors" && computerChoice === "paper")
+        ) {
+            userScore++;
+            document.getElementById("userScore").textContent = userScore;
+            document.getElementById("message").textContent = "You Win! 🎉";
+        } 
+        else {
+            computerScore++;
+            document.getElementById("computerScore").textContent = computerScore;
+            document.getElementById("message").textContent = "Computer Wins! 😢";
+        }
+    }
+</script>
+
+</body>
+</html>
+
+OUTPUT FILE---
+file:///C:/Users/megha/lecture%20c%2B%2B/local.html
+                                        
